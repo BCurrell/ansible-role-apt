@@ -1,0 +1,4 @@
+---
+skip_list:
+  # Skip name[casing] because it requires task names start with upper case, however I use namespaced task names as standard
+  - 'name[casing]'

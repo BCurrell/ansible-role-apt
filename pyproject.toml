@@ -1,0 +1,23 @@
+[project]
+name = "ansible-role-apt"
+version = "0.0.1"
+description = "Ansible role to control APT repositories and associated settings"
+authors = [
+    {name = "Brandon Currell", email = "brandon+git@currell.pw"}
+]
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+	"pre-commit (>=4.0.0,<5.0.0)",
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false

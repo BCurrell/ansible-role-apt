@@ -1,0 +1,34 @@
+# Ignore everything
+**
+
+# Track any files or folders starting with .git
+!.git*
+
+# Track any files or folders starting with LICENSE
+!LICENSE*
+# Track any files or folders starting with README
+!README*
+
+# Track EditorConfig configuration file
+!.editorconfig
+
+# Track Poetry package management files
+!/poetry.lock
+!/pyproject.toml
+
+# Track pre-commit configuration file
+!.pre-commit-config.yaml
+
+# Track ansible-lint configuration file
+!.ansible-lint
+
+# Track the role default variables
+!defaults/
+!defaults/**
+
+# Track the role tasks
+!tasks/
+!tasks/**
+
+# Ignore any Python cache directories
+__pycache__
