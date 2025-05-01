@@ -2,7 +2,7 @@
 # We have an immutable 'apt_key' variable from the loop
 
 - name: 'apt:key:content'
-  when: "'content' in apt_key_instance"
+  when: "'content' in apt_key"
   block:
     - name: 'apt:key:content:instance'
       ansible.builtin.set_fact:
@@ -25,7 +25,7 @@
         - 'skip_ansible_lint'
 
 - name: 'apt:key:download'
-  when: "'content' not in apt_key_instance"
+  when: "'content' not in apt_key"
   block:
     - name: 'apt:key:download:instance'
       ansible.builtin.set_fact:
