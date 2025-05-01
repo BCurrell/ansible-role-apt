@@ -9,7 +9,7 @@
 
 - name: 'apt:source:content'
   ansible.builtin.set_fact:
-    apt_source_content: "{{ apt_source_content_default | combine(apt_source_instance.content) }}"
+    apt_source_content: "{{ apt_source_content_defaults | combine(apt_source_instance.content) }}"
     apt_source_instance: "{{ apt_source_instance | dict2items | rejectattr('key', 'equalto', 'content') | items2dict }}"
 
 # We have 'apt_source_content' extracted from 'apt_source_instance' with defaults
