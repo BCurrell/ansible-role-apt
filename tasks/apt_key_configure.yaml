@@ -1,16 +1,16 @@
 ---
 # We have an immutable 'apt_key' variable from the loop
 
-- name: 'apt:key:instance'
-  ansible.builtin.set_fact:
-    apt_key_instance: "{{ apt_key_defaults | combine(apt_key) }}"
-
-# We have a mutable 'apt_key_instance' variable with defaults
-
 - name: 'apt:key:content'
   when: "'content' in apt_key_instance"
   block:
-    - name: 'apt:key:content:variable'
+    - name: 'apt:key:content:instance'
+      ansible.builtin.set_fact:
+        apt_key_instance: "{{ apt_key_defaults_content | combine(apt_key) }}"
+
+    # We have a mutable 'apt_key_instance' variable with defaults
+
+    - name: 'apt:key:content:content'
       ansible.builtin.set_fact:
         apt_key_content: "{{ apt_key_instance.content }}"
         apt_key_instance: "{{ apt_key_instance | dict2items | rejectattr('key', 'equalto', 'content') | items2dict }}"
@@ -26,6 +26,14 @@
 
 - name: 'apt:key:download'
   when: "'content' not in apt_key_instance"
-  ansible.builtin.get_url: "{{ apt_key_instance }}"
-  tags:
-    - 'skip_ansible_lint'
+  block:
+    - name: 'apt:key:download:instance'
+      ansible.builtin.set_fact:
+        apt_key_instance: "{{ apt_key_defaults_download | combine(apt_key) }}"
+
+    # We have a mutable 'apt_key_instance' variable with defaults
+
+    - name: 'apt:key:download:download'
+      ansible.builtin.get_url: "{{ apt_key_instance }}"
+      tags:
+        - 'skip_ansible_lint'

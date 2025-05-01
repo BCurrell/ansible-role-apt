@@ -45,14 +45,14 @@ apt_preferences_basepath:
   mode: '0755'
 
 # APT key file defaults with provided contents
-apt_key_file_default_content:
+apt_key_file_defaults_content:
   src: 'templates/apt_key.j2'
   owner: 'root'
   group: 'root'
   mode: '0640'
 
 # APT key file defaults with downloaded file
-apt_key_file_default_download:
+apt_key_file_defaults_download:
   owner: 'root'
   group: 'root'
   mode: '0640'
