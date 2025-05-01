@@ -44,29 +44,43 @@ apt_preferences_basepath:
   group: 'root'
   mode: '0755'
 
-# APT key file defaults
-apt_keys_default:
+# APT key file defaults with provided contents
+apt_key_file_default_content:
   src: 'templates/apt_key.j2'
   owner: 'root'
   group: 'root'
   mode: '0640'
 
+# APT key file defaults with downloaded file
+apt_key_file_default_download:
+  owner: 'root'
+  group: 'root'
+  mode: '0640'
+
 # APT auth file defaults
-apt_auths_default:
+apt_auth_file_default:
   src: 'templates/apt_auth.j2'
   owner: 'root'
   group: 'root'
   mode: '0640'
 
 # APT source file defaults
-apt_sources_default:
+apt_source_file_default:
   src: 'templates/apt_source.j2'
   owner: 'root'
   group: 'root'
   mode: '0640'
 
+# APT source file default contents
+apt_source_content_default:
+  architectures: []
+  components:
+    - 'stable'
+  suites:
+    - "{{ ansible_facts['ansible_distribution_release'] }}"
+
 # APT preference file defaults
-apt_preferences_default:
+apt_preference_file_default:
   src: 'templates/apt_preference.j2'
   owner: 'root'
   group: 'root'
