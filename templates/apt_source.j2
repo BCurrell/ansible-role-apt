@@ -11,6 +11,6 @@ URIs:
   {{ uri }}
 {%- endfor %}
 {% endif %}
-Suites: {{ apt_source_content.suites || join(' ') }}
-Components: {{ apt_source_content.components || join(' ') }}
+Suites: {{ apt_source_content.suites | join(' ') }}
+Components: {{ apt_source_content.components | join(' ') }}
 Signed-By: {{ apt_source_content.signed_by }}
