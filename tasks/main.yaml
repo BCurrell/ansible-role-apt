@@ -24,28 +24,36 @@
   loop_control:
     loop_var: 'apt_key'
   when: "(apt_key.state | default('present') == 'absent')"
-  ansible.builtin.include_tasks: './apt_key_remove.yaml'
+  ansible.builtin.file:
+    path: '{{ apt_key.path }}'
+    state: 'absent'
 
 - name: 'apt:auths:remove'
   loop: '{{ apt_auths }}'
   loop_control:
     loop_var: 'apt_auth'
   when: "(apt_auth.state | default('present') == 'absent')"
-  ansible.builtin.include_tasks: './apt_auth_remove.yaml'
+  ansible.builtin.file:
+    path: '{{ apt_auth.path }}'
+    state: 'absent'
 
 - name: 'apt:sources:remove'
   loop: '{{ apt_sources }}'
   loop_control:
     loop_var: 'apt_source'
   when: "(apt_source.state | default('present') == 'absent')"
-  ansible.builtin.include_tasks: './apt_source_remove.yaml'
+  ansible.builtin.file:
+    path: '{{ apt_source.path }}'
+    state: 'absent'
 
 - name: 'apt:preferences:remove'
   loop: '{{ apt_preferences }}'
   loop_control:
     loop_var: 'apt_preference'
   when: "(apt_preference.state | default('present') == 'absent')"
-  ansible.builtin.include_tasks: './apt_preference_remove.yaml'
+  ansible.builtin.file:
+    path: '{{ apt_preference.path }}'
+    state: 'absent'
 
 - name: 'apt:keys:configure'
   loop: '{{ apt_keys }}'
