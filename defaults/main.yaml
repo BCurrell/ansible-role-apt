@@ -49,13 +49,13 @@ apt_key_defaults_content:
   src: 'templates/apt_key.j2'
   owner: 'root'
   group: 'root'
-  mode: '0640'
+  mode: '0644'
 
 # APT key file defaults with downloaded file
 apt_key_defaults_download:
   owner: 'root'
   group: 'root'
-  mode: '0640'
+  mode: '0644'
 
 # APT auth file defaults
 apt_auth_defaults:
