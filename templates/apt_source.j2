@@ -7,9 +7,9 @@ Types: {{ apt_source_content.types | join(' ') }}
 URIs: {{ apt_source_content.uris }}
 {% elif apt_source_content.uris is iterable %}
 URIs:
-{%- for uri in apt_source_content.uris %}
+{% for uri in apt_source_content.uris %}
   {{ uri }}
-{%- endfor %}
+{% endfor %}
 {% endif %}
 Suites: {{ apt_source_content.suites | join(' ') }}
 Components: {{ apt_source_content.components | join(' ') }}
