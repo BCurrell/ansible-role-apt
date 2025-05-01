@@ -1,1 +1,22 @@
 ---
+# We have an immutable 'apt_auth' variable from the loop
+
+- name: 'apt:auth:instance'
+  ansible.builtin.set_fact:
+    apt_auth_instance: "{{ apt_auth_defaults | combine(apt_auth) }}"
+
+# We have a mutable 'apt_auth_instance' variable with defaults
+
+- name: 'apt:auth:content'
+  ansible.builtin.set_fact:
+    apt_auth_content: "{{ apt_auth_instance.content }}"
+    apt_auth_instance: "{{ apt_auth_instance | dict2items | rejectattr('key', 'equalto', 'content') | items2dict }}"
+
+# We have 'apt_auth_content' extracted from 'apt_auth_instance'
+
+- name: 'apt:auth:template'
+  ansible.builtin.template: "{{ apt_auth_instance }}"
+  vars:
+    apt_auth_content: "{{ apt_auth_content }}"
+  tags:
+    - 'skip_ansible_lint'

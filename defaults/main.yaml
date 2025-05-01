@@ -58,7 +58,7 @@ apt_key_file_default_download:
   mode: '0640'
 
 # APT auth file defaults
-apt_auth_file_default:
+apt_auth_defaults:
   src: 'templates/apt_auth.j2'
   owner: 'root'
   group: 'root'
@@ -75,9 +75,11 @@ apt_source_file_default:
 apt_source_content_default:
   architectures: []
   components:
-    - 'stable'
+    - 'main'
   suites:
     - "{{ ansible_facts['ansible_distribution_release'] }}"
+  types:
+    - 'deb'
 
 # APT preference file defaults
 apt_preference_file_default:
