@@ -65,14 +65,14 @@ apt_auth_defaults:
   mode: '0640'
 
 # APT source file defaults
-apt_source_file_default:
+apt_source_defaults:
   src: 'templates/apt_source.j2'
   owner: 'root'
   group: 'root'
   mode: '0640'
 
 # APT source file default contents
-apt_source_content_default:
+apt_source_content_defaults:
   architectures: []
   components:
     - 'main'

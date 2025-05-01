@@ -1,0 +1,16 @@
+###
+#  {{ ansible_managed }}
+###
+
+Types: {{ apt_source_content.types | join(' ') }}
+{% if apt_source_content.uris is string %}
+URIs: {{ apt_source_content.uris }}
+{% elif apt_source_content.uris is iterable %}
+URIs:
+{%- for uri in apt_source_content.uris %}
+  {{ uri }}
+{%- endfor %}
+{% endif %}
+Suites: {{ apt_source_content.suites || join(' ') }}
+Components: {{ apt_source_content.components || join(' ') }}
+Signed-By: {{ apt_source_content.signed_by }}
