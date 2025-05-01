@@ -77,7 +77,7 @@ apt_source_content_default:
   components:
     - 'main'
   suites:
-    - "{{ ansible_facts['ansible_distribution_release'] }}"
+    - "{{ ansible_facts['distribution_release'] }}"
   types:
     - 'deb'
 
