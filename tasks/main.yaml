@@ -25,7 +25,7 @@
     loop_var: 'apt_key'
   when: "(apt_key.state | default('present') == 'absent')"
   ansible.builtin.file:
-    path: '{{ apt_key.path }}'
+    path: '{{ apt_key.dest }}'
     state: 'absent'
   notify:
     - 'apt:update_cache'
@@ -36,7 +36,7 @@
     loop_var: 'apt_auth'
   when: "(apt_auth.state | default('present') == 'absent')"
   ansible.builtin.file:
-    path: '{{ apt_auth.path }}'
+    path: '{{ apt_auth.dest }}'
     state: 'absent'
   notify:
     - 'apt:update_cache'
@@ -47,7 +47,7 @@
     loop_var: 'apt_source'
   when: "(apt_source.state | default('present') == 'absent')"
   ansible.builtin.file:
-    path: '{{ apt_source.path }}'
+    path: '{{ apt_source.dest }}'
     state: 'absent'
   notify:
     - 'apt:update_cache'
@@ -58,7 +58,7 @@
     loop_var: 'apt_preference'
   when: "(apt_preference.state | default('present') == 'absent')"
   ansible.builtin.file:
-    path: '{{ apt_preference.path }}'
+    path: '{{ apt_preference.dest }}'
     state: 'absent'
   notify:
     - 'apt:update_cache'
