@@ -21,6 +21,8 @@
       ansible.builtin.template: "{{ apt_key_instance }}"
       vars:
         apt_key_content: "{{ apt_key_content }}"
+      notify:
+        - 'apt:update_cache'
       tags:
         - 'skip_ansible_lint'
 
@@ -35,5 +37,7 @@
 
     - name: 'apt:key:download:download'
       ansible.builtin.get_url: "{{ apt_key_instance }}"
+      notify:
+        - 'apt:update_cache'
       tags:
         - 'skip_ansible_lint'

@@ -18,5 +18,7 @@
   ansible.builtin.template: "{{ apt_auth_instance }}"
   vars:
     apt_auth_content: "{{ apt_auth_content }}"
+  notify:
+    - 'apt:update_cache'
   tags:
     - 'skip_ansible_lint'

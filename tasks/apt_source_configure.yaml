@@ -18,5 +18,7 @@
   ansible.builtin.template: "{{ apt_source_instance }}"
   vars:
     apt_source_content: "{{ apt_source_content }}"
+  notify:
+    - 'apt:update_cache'
   tags:
     - 'skip_ansible_lint'

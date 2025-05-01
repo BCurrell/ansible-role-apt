@@ -26,6 +26,10 @@
 !defaults/
 !defaults/**
 
+# Track the role handlers
+!handlers/
+!handlers/**
+
 # Track the role tasks
 !tasks/
 !tasks/**

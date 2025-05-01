@@ -27,6 +27,8 @@
   ansible.builtin.file:
     path: '{{ apt_key.path }}'
     state: 'absent'
+  notify:
+    - 'apt:update_cache'
 
 - name: 'apt:auths:remove'
   loop: '{{ apt_auths }}'
@@ -36,6 +38,8 @@
   ansible.builtin.file:
     path: '{{ apt_auth.path }}'
     state: 'absent'
+  notify:
+    - 'apt:update_cache'
 
 - name: 'apt:sources:remove'
   loop: '{{ apt_sources }}'
@@ -45,6 +49,8 @@
   ansible.builtin.file:
     path: '{{ apt_source.path }}'
     state: 'absent'
+  notify:
+    - 'apt:update_cache'
 
 - name: 'apt:preferences:remove'
   loop: '{{ apt_preferences }}'
@@ -54,6 +60,8 @@
   ansible.builtin.file:
     path: '{{ apt_preference.path }}'
     state: 'absent'
+  notify:
+    - 'apt:update_cache'
 
 - name: 'apt:keys:configure'
   loop: '{{ apt_keys }}'
