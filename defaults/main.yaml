@@ -9,14 +9,37 @@ apt_auths: []
 apt_sources: []
 apt_preferences: []
 
-# Defaults for downloading / configuring APT keys.
-apt_key_defaults: {}
+# APT base directory
+apt_basepath: '/etc/apt'
 
-# Defaults for configuring APT authentication details.
-apt_auth_defaults: {}
+# APT directory for keys
+apt_keys_basepath:
+  path: '{{ apt_basepath }}/keyrings'
+  state: 'directory'
+  owner: 'root'
+  group: 'root'
+  mode: '0755'
 
-# Defaults for configuring APT source details.
-apt_source_defaults: {}
+# APT directory for auths
+apt_auths_basepath:
+  path: '{{ apt_basepath }}/auth.conf.d'
+  state: 'directory'
+  owner: 'root'
+  group: 'root'
+  mode: '0755'
 
-# Defaults for configuring APT preference details.
-apt_preference_defaults: {}
+# APT directory for sources
+apt_sources_basepath:
+  path: '{{ apt_basepath }}/sources.list.d'
+  state: 'directory'
+  owner: 'root'
+  group: 'root'
+  mode: '0755'
+
+# APT directory for preferences
+apt_preferences_basepath:
+  path: '{{ apt_basepath }}/preferences.d'
+  state: 'directory'
+  owner: 'root'
+  group: 'root'
+  mode: '0755'

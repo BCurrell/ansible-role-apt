@@ -1,4 +1,24 @@
 ---
+- name: 'apt:keys:basepath'
+  ansible.builtin.file: "{{ ansible_keys_basepath }}"
+  tags:
+    - 'skip_ansible_lint'
+
+- name: 'apt:auths:basepath'
+  ansible.builtin.file: "{{ ansible_auths_basepath }}"
+  tags:
+    - 'skip_ansible_lint'
+
+- name: 'apt:sources:basepath'
+  ansible.builtin.file: "{{ ansible_sources_basepath }}"
+  tags:
+    - 'skip_ansible_lint'
+
+- name: 'apt:preferences:basepath'
+  ansible.builtin.file: "{{ ansible_preferences_basepath }}"
+  tags:
+    - 'skip_ansible_lint'
+
 - name: 'apt:keys:remove'
   loop: '{{ apt_keys }}'
   loop_control:
