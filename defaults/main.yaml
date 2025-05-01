@@ -1,1 +1,22 @@
 ---
+###
+#
+###
+
+# Define empty lists to guarantee that the variable exists.
+apt_keys: []
+apt_auths: []
+apt_sources: []
+apt_preferences: []
+
+# Defaults for downloading / configuring APT keys.
+apt_key_defaults: {}
+
+# Defaults for configuring APT authentication details.
+apt_auth_defaults: {}
+
+# Defaults for configuring APT source details.
+apt_source_defaults: {}
+
+# Defaults for configuring APT preference details.
+apt_preference_defaults: {}
