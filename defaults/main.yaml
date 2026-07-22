@@ -57,6 +57,9 @@ apt_key_defaults_download:
   group: 'root'
   mode: '0644'
 
+# APT key download uses HEAD rather than GET in check mode, which some endpoints will error on
+apt_key_download_check_mode: true
+
 # APT auth file defaults
 apt_auth_defaults:
   src: 'templates/apt_auth.j2'

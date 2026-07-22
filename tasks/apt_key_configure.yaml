@@ -37,6 +37,7 @@
 
     - name: 'apt:key:download:download'
       ansible.builtin.get_url: "{{ apt_key_instance }}"
+      check_mode: '{{ apt_key_download_check_mode }}'
       notify:
         - 'apt:update_cache'
       tags:
